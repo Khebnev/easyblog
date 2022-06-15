@@ -45,8 +45,13 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ShowBlogRequest $id)
     {
+        $validated = $id->validated();
+        if(!$validated){
+            return response()->json('Error');
+        }
+
         $post = BlogPost::find($id);
 
         return response()->json($post);

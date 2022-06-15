@@ -22,3 +22,15 @@ class CreateBlogRequest extends FormRequest
         ];
     }
 }
+
+class ShowBlogRequest extends FormRequest
+{
+    public function rules()
+    {
+        return [
+            'title' => 'required|min:5|max:15',
+            'body' => 'required',
+            'user_id' => 'required'
+        ];
+    }
+}
